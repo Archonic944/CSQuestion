@@ -32,13 +32,15 @@ public class ParseUtility {
     }
 
     /**
-     * Takes in new data of the specified length. Must be called before other operations; previous data will be replaced.
+     * Takes in new <code>split</code>-delimited data of the specified length. Must be called before other operations; previous data will be replaced.
      * @param length amount of rows to take from the scanner
      */
     public void readTable(int length){
         table = new String[length][];
+        int maxRowLength = 0;
         for(int i = 0; i<length; i++){
             table[i] = scanner.nextLine().split(split);
+            if(table[i].length > maxRowLength) maxRowLength = table[i].length;
         }
     }
 
@@ -99,8 +101,31 @@ public class ParseUtility {
         return Integer.parseInt(strAt(x, y));
     }
 
-    public int[] intArrayAt(int row){
-        return asIntArray(table[row]);
+    public int[] intArrayAtRow(int row){
+        return intArrayAtRow(row, 0);
+    }
+
+    public int[] intArrayAtRow(int row, int offset){
+        return asIntArray(Arrays.copyOfRange(table[row], offset, table[row].length)); //this is pretty slow. 🐌
+    }
+
+    /**
+     * @throws NumberFormatException if the column contains non-integer values OR if the array is jagged in a way that leaves the column with empty spaces
+     */
+    public int[] intArrayAtColumn(int column){
+        int[] arr = new int[table.length];
+        for(int i = 0; i<table.length; i++){
+            arr[i] = Integer.parseInt(table[i][column]);
+        }
+        return arr;
+    }
+
+    public double[] doubleArrayAtColumn(int column){
+        double[] arr = new double[table.length];
+        for(int i = 0; i<table.length; i++){
+            arr[i] = Double.parseDouble(table[i][column]);
+        }
+        return arr;
     }
 
     /**

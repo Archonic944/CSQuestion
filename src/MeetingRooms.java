@@ -1,4 +1,3 @@
-import utils.Pair;
 import utils.ParseUtility;
 
 import java.util.ArrayList;
@@ -18,8 +17,8 @@ public class MeetingRooms {
                 ArrayList<Integer> currentOverlaps = new ArrayList<>();
                 for (int j = 0; j < parser.table.length; j++) {
                     if (i != j) {
-                        int[] meeting1 = parser.intArrayAt(i);
-                        int[] meeting2 = parser.intArrayAt(j);
+                        int[] meeting1 = parser.intArrayAtRow(i);
+                        int[] meeting2 = parser.intArrayAtRow(j);
                         if ((meeting1[0] >= meeting2[0] && meeting1[0] < meeting2[1]) || (meeting1[1] > meeting2[0] && meeting1[1] <= meeting2[1])) {
                             currentOverlaps.add(j);
                         }
