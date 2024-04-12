@@ -20,22 +20,28 @@ public class ParseUtility {
     }
 
     Scanner scanner;
-    String split;
+    String split = " ";
     public String[][] table;
-    public ParseUtility(Scanner scanner, String split){
-        this.scanner = scanner;
-        this.split = split;
-    }
-
     public ParseUtility(Scanner scanner){
-        this(scanner, " ");
+        this.scanner = scanner;
     }
 
     /**
      * Takes in new <code>split</code>-delimited data of the specified length. Must be called before other operations; previous data will be replaced.
      * @param length amount of rows to take from the scanner
      */
-    public void readTable(int length){
+    public void readTable(int length) {
+        readTable(length, " ");
+    }
+
+    /**
+     * Takes in new <code>split</code>-delimited data of the specified length. Must be called before other operations; previous data will be replaced.
+     *
+     * @param length    amount of rows to take from the scanner
+     * @param delimiter what character to split each row on
+     */
+    public void readTable(int length, String delimiter){
+        this.split = delimiter;
         table = new String[length][];
         int maxRowLength = 0;
         for(int i = 0; i<length; i++){
