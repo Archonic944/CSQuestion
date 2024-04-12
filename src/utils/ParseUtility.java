@@ -1,0 +1,141 @@
+package utils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.function.Function;
+
+public class ParseUtility {
+    static String[] asArray(String line){
+        return line.split(" ");
+    }
+
+    static int[] asIntArray(String line){
+        return asIntArray(asArray(line));
+    }
+
+    static int[] asIntArray(String[] line){
+        return Arrays.stream(line).mapToInt(Integer::parseInt).toArray();
+    }
+
+    Scanner scanner;
+    String split;
+    public String[][] table;
+    public ParseUtility(Scanner scanner, String split){
+        this.scanner = scanner;
+        this.split = split;
+    }
+
+    public ParseUtility(Scanner scanner){
+        this(scanner, " ");
+    }
+
+    /**
+     * Takes in new data of the specified length. Must be called before other operations; previous data will be replaced.
+     * @param length amount of rows to take from the scanner
+     */
+    public void readTable(int length){
+        table = new String[length][];
+        for(int i = 0; i<length; i++){
+            table[i] = scanner.nextLine().split(split);
+        }
+    }
+
+    /**
+     * reads space separated float coordinates, in format: (x y) (x y) ...
+     */
+    public List<Pair<Double, Double>> readCoords(int row){
+        String[] arr = String.join(split, strArrayAt(row)).split("\\) \\(");
+        ArrayList<Pair<Double, Double>> list = new ArrayList<>();
+        for(String coord : arr){
+            coord = coord.replace("(", "");
+            coord = coord.replace(")", "");
+            String[] split = coord.split(" ");
+            list.add(new Pair<>(Double.parseDouble(split[0]), Double.parseDouble(split[1])));
+        }
+        return list;
+    }
+
+    /**
+     * Reads a table of the format [[1,2,3],[4,5,6],[7,8,9]] into a 2D array.
+     */
+    public void readArrayNotation() {
+        readArrayNotation(1);
+    }
+
+    /**
+     * Reads a table of the format
+     * <br> [[1,2,3], <br>
+     * [4,5,6], <br>
+     * [7,8,9]] <br>
+     * into a 2D array.
+     * <BR><BR>NOTE: This method will delete all quotation marks.
+     */
+    public void readArrayNotation(int lines){
+        StringBuilder line = new StringBuilder();
+        for(int i = 0; i<lines; i++){
+            line.append(scanner.nextLine().replaceAll(" ", "").replaceAll("\"", ""));
+        }
+        if(line.charAt(0) == '[' && line.charAt(line.length() - 1) == ']'){
+            line.deleteCharAt(0);
+            line.deleteCharAt(line.length() - 1);
+        }else throw new RuntimeException("Invalid array notation: " + line);
+        if(line.isEmpty()){
+            table = new String[0][];
+            return;
+        }
+        String[] raw = line.toString().split("],\\[");
+        for(int i = 0; i<raw.length; i++){
+            raw[i] = raw[i].replace("[", "").replace("]", "");
+        }
+        table = new String[raw.length][];
+        for(int i = 0; i<raw.length; i++){
+            table[i] = raw[i].split(",");
+        }
+    }
+
+    public int integerAt(int x, int y){
+        return Integer.parseInt(strAt(x, y));
+    }
+
+    public int[] intArrayAt(int row){
+        return asIntArray(table[row]);
+    }
+
+    /**
+     *
+     * @param x Column location of string
+     * @param y Row location of string
+     * @return String at coordinates
+     */
+    public String strAt(int x, int y){
+        return table[y][x];
+    }
+
+    /**
+     * In case each string is meant to be accessed as an array of characters.
+     * @return Character at y-value of string at x-value
+     * WARNING: This method assumes that the characters are combined into a single string, not 1 character per string.
+     */
+    public char charAt(int x, int y){
+        return strAt(0, y).charAt(x);
+    }
+
+    public String[] strArrayAt(int row){
+        return table[row];
+    }
+
+    /**
+     * Converts the table to a 2D array of type T using the provided function. This function processes each string in the table individually.
+     */
+    public <T> T[][] convert2D(Function<String, T> function){
+        T[][] arr = (T[][]) new Object[table.length][table[0].length];
+        for(int i = 0; i<table.length; i++){
+            for(int j = 0; j<table[i].length; j++){
+                arr[i][j] = function.apply(table[i][j]);
+            }
+        }
+        return arr;
+    }
+}
