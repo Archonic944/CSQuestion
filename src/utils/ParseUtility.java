@@ -126,6 +126,14 @@ public class ParseUtility {
         return arr;
     }
 
+    public String[] stringArrayAtColumn(int column){
+        String[] arr = new String[table.length];
+        for(int i = 0; i<table.length; i++){
+            arr[i] = table[i][column];
+        }
+        return arr;
+    }
+
     public double[] doubleArrayAtColumn(int column){
         double[] arr = new double[table.length];
         for(int i = 0; i<table.length; i++){
