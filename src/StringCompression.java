@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+//UNFINISHED
 public class StringCompression {
     static final int MIN = 1;
     public static void main(String[] args) {
