@@ -26,6 +26,10 @@ public class ParseUtility {
         this.scanner = scanner;
     }
 
+    public ParseUtility(){
+        this(new Scanner(System.in));
+    }
+
     /**
      * Takes in new <code>split</code>-delimited data of the specified length. Must be called before other operations; previous data will be replaced.
      * @param length amount of rows to take from the scanner
