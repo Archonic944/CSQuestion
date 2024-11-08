@@ -31,4 +31,8 @@ public class Pair<K, V>  {
     public int hashCode() {
         return Objects.hash(key, value);
     }
+
+    public String toString(){
+        return "Pair(" + this.key + ", " + this.value + ")";
+    }
 }
