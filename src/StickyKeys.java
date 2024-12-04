@@ -11,7 +11,6 @@ public class StickyKeys {
         if(og.equals(candidate)) return true;
         else if(og.length() == 1 && candidate.length() == 1) return false;
         //dual iteration
-        int ogCount = 0;
         int i = 0,j = 0;
         while(true){
             if(i == og.length()){

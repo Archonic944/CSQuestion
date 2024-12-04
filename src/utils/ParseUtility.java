@@ -33,9 +33,10 @@ public class ParseUtility {
     /**
      * Takes in new <code>split</code>-delimited data of the specified length. Must be called before other operations; previous data will be replaced.
      * @param length amount of rows to take from the scanner
+     * @return This for chaining
      */
-    public void readTable(int length) {
-        readTable(length, " ");
+    public ParseUtility readTable(int length) {
+        return readTable(length, " ");
     }
 
     /**
@@ -43,8 +44,9 @@ public class ParseUtility {
      *
      * @param length    amount of rows to take from the scanner
      * @param delimiter what character to split each row on
+     * @return This for chaining
      */
-    public void readTable(int length, String delimiter){
+    public ParseUtility readTable(int length, String delimiter){
         this.split = delimiter;
         table = new String[length][];
         int maxRowLength = 0;
@@ -52,6 +54,7 @@ public class ParseUtility {
             table[i] = scanner.nextLine().split(split);
             if(table[i].length > maxRowLength) maxRowLength = table[i].length;
         }
+        return this;
     }
 
     /**
