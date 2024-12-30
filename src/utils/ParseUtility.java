@@ -1,5 +1,7 @@
 package utils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,6 +9,38 @@ import java.util.Scanner;
 import java.util.function.Function;
 
 public class ParseUtility {
+    public static Scanner scannerFromFile(String path) {
+        try {
+            return new Scanner(new File(path));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Scanner scannerFromFile(File file){
+        try {
+            return new Scanner(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static String fileToString(File f){
+        try {
+            Scanner scan = new Scanner(f);
+            StringBuilder sb = new StringBuilder();
+            while(scan.hasNextLine()){
+                sb.append(scan.nextLine());
+            }
+            return sb.toString();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     static String[] asArray(String line){
         return line.split(" ");
     }

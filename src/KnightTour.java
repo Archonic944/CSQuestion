@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * WARNING: CURRENTLY BROKEN
+ * WARNING: CURRENTLY BROKEN. I AM NOT FIXING THIS SHIT.
  */
 public class KnightTour {
     //https://www.geeksforgeeks.org/the-knights-tour-problem/ because i suck at explaining
