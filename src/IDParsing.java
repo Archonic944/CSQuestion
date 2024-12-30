@@ -47,7 +47,7 @@ public class IDParsing {
     }
 
     /**
-     * Extract a set of IDs from an HTML document. {@code pattern} and {@code breakPattern} are not compiled as p'atterns.
+     * Extract a set of IDs from an HTML document. {@code pattern} and {@code breakPattern} are not compiled as patterns.
      * @see IDParsing#extractIDs(String, Pattern, Pattern)
      */
     public static Set<String> extractIDs(String html, String pattern, String breakPattern){
