@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class IDParsing {
     public static void main(String[] args) throws IOException {
         //get all files in the folder
-        String folderPath = "/Users/gabriel/Downloads/Queries/txt/sgen";
+        String folderPath = "/Users/gabriel/Downloads/Queries/txt/nsf";
         File folder = new File(folderPath);
         File[] files = folder.listFiles();
         String outPath = folderPath + "/output.txt";

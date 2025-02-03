@@ -206,6 +206,14 @@ public class ParseUtility {
         return table[row];
     }
 
+    public char[] charArrayAt(int row){
+        char[] chars = new char[table[row].length];
+        for(int i = 0; i<chars.length; i++){
+            chars[i] = table[row][i].charAt(0);
+        }
+        return chars;
+    }
+
     /**
      * Converts the table to a 2D array of type T using the provided function. This function processes each string in the table individually.
      */

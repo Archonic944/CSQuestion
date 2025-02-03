@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 //UVA 2018
-//no idea what this question wants from me
 public class HardDayAtWork {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
