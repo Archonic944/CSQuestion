@@ -202,6 +202,14 @@ public class ParseUtility {
         return strAt(0, y).charAt(x);
     }
 
+    /**
+     * Assumes each entry is split into a single char separated by the delimiter.
+     * @see ParseUtility::charAt
+     */
+    public char singleCharAt(int x, int y){
+        return strAt(x, y).charAt(0);
+    }
+
     public String[] strArrayAt(int row){
         return table[row];
     }
