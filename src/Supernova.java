@@ -27,6 +27,7 @@ public class Supernova {
     static final int GRID_SIZE = 256;
 
     /**
+     * Distance test solution. Time complexity: O(w^2 * n) <br> <br>
      * since p2 is shuffled, and p2[i] isn't the same particle as p1[i], some level of brute force is required
      * <br>
      * your first thought might be to sort both arrays, but around what origin? by what? the only thing we could sort them by is their trajectory to an unknown origin.
