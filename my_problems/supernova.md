@@ -2,7 +2,7 @@
 
 An explosion has occurred at some integer coordinate $(x,y)$ where $0 ≤ x,y ≤ 256$.
 
-A series of dust particles (single points) were ejected from the source of the explosion at varying speeds and trajectories.
+A series of dust particles (single points) were ejected from the source of the explosion at varying speeds and straight trajectories.
 
 All you have is two photos; both capture all of the dust particles, and the second photo was taken after the first one. **Every dust particle has a different speed, and therefore the time between the photos is irrelevant.**
 
