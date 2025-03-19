@@ -1,11 +1,6 @@
 import java.util.BitSet;
 import java.util.Scanner;
 
-/**
- * Binary Modulus
- * Do modulus without %, /, *.
- */
-
 public class BinaryModulus {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
