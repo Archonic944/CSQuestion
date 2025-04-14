@@ -56,7 +56,7 @@ public class TheSkylineProblem {
     }
 
     /**
-     * Integer list with 2 elements that only supports get() and size()
+     * Integer list with 2 elements that only supports get() and size() (for efficient leetcode output)
      */
     static class PairList implements List<Integer> {
         int val1;
@@ -223,4 +223,20 @@ public class TheSkylineProblem {
         }
     }
 
+    public static void main(String[] args) {
+        TheSkylineProblem skylineProblem = new TheSkylineProblem();
+        int[][] buildings = {
+                {2, 9, 5},
+                {2, 7, 10},
+                {7, 8, 8},
+                {7, 8, 9},
+                {3, 11, 4},
+                {9, 10, 6}
+        };
+        List<List<Integer>> result = skylineProblem.getSkyline(buildings);
+        //space + line separated result
+        for (List<Integer> point : result) {
+            System.out.println(point.get(0) + " " + point.get(1));
+        }
+    }
 }

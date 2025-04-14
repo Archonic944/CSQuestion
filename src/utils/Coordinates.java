@@ -47,4 +47,46 @@ public class Coordinates {
     public int simpleDist(Coordinates c){
         return Math.abs(this.x - c.x) + Math.abs(this.y - c.y);
     }
+
+    public void add(Coordinates c){
+        this.x += c.x;
+        this.y += c.y;
+    }
+
+    public void subtract(Coordinates c){
+        this.x -= c.x;
+        this.y -= c.y;
+    }
+
+    public void multiply(int i){
+        this.x *= i;
+        this.y *= i;
+    }
+
+    public void divide(int i){
+        this.x /= i;
+        this.y /= i;
+    }
+
+    //stupid stupid stupid stupid stupid stupid stupid stupid stupid stupid stupid stupid
+
+    public void add(IntPair i){
+        this.x += i.key;
+        this.y += i.val;
+    }
+
+    public void subtract(IntPair i){
+        this.x -= i.key;
+        this.y -= i.val;
+    }
+
+    public void multiply(IntPair i){
+        this.x *= i.key;
+        this.y *= i.val;
+    }
+
+    public void divide(IntPair i){
+        this.x /= i.key;
+        this.y /= i.val;
+    }
 }
