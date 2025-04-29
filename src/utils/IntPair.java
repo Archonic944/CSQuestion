@@ -14,4 +14,19 @@ public class IntPair {
         this.key = key;
         this.val = val;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        IntPair intPair = (IntPair) o;
+        return key == intPair.key && val == intPair.val;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = key;
+        result = 31 * result + val;
+        return result;
+    }
 }

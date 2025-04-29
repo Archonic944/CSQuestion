@@ -20,7 +20,6 @@ public class Triangles {
             Pair<Double, Double> point = parser.readCoords(i).getFirst();
             System.out.println(triangleCollides(triangle, point) ? "YES" : "NO");
         }
-        throw new RuntimeException("lol just go ahead and check the stuff");
     }
 
     static List<Double> areas = new ArrayList<>();
@@ -43,7 +42,7 @@ public class Triangles {
         areas.add(a1);
         areas.add(a2);
         areas.add(a3);
-        return Math.abs((a1 + a2 + a3) - a0) < 0.00001; //what if 1 area is 0.2, and the other is 0.1?
+        return Math.abs((a1 + a2 + a3) - a0) < 0.00001;
     }
 
     static double area(double x1, double y1, double x2, double y2, double x3, double y3) {
