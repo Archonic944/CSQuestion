@@ -92,7 +92,40 @@ public class ParseUtility {
     }
 
     /**
-     * reads space separated float coordinates, in format: (x y) (x y) ...
+     * Reads a binary grid (0s and 1s) and returns a boolean matrix
+     * @param rows Number of rows to read
+     * @param cols Number of columns in each row (optional, will infer from first row if not provided)
+     * @return A boolean matrix where true represents a 1 and false represents a 0
+     */
+    public boolean[][] readBinaryGrid(int rows) {
+        String[][] stringGrid = new String[rows][];
+        for (int i = 0; i < rows; i++) {
+            stringGrid[i] = scanner.nextLine().split("");
+        }
+        
+        int cols = stringGrid[0].length;
+        boolean[][] grid = new boolean[rows][cols];
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                grid[i][j] = stringGrid[i][j].equals("1");
+            }
+        }
+        
+        return grid;
+    }
+    
+    /**
+     * Reads dimensions in format "n m" and returns them as an array
+     * @return An array where the first element is the number of rows and the second element is the number of columns
+     */
+    public int[] readDimensions() {
+        String[] dimensions = scanner.nextLine().split(" ");
+        return new int[]{Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1])};
+    }
+
+    /**
+     * Readss space separated float coordinates, in format: (x y) (x y) ...
      */
     public List<Pair<Double, Double>> readCoords(int row){
         String[] arr = String.join(split, strArrayAt(row)).split("\\) \\(");
@@ -233,5 +266,18 @@ public class ParseUtility {
             }
         }
         return arr;
+    }
+    
+    /**
+     * Converts the table to a boolean 2D array where "1" is true and anything else is false
+     */
+    public boolean[][] toBinaryGrid() {
+        boolean[][] grid = new boolean[table.length][table[0].length];
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table[i].length; j++) {
+                grid[i][j] = table[i][j].equals("1");
+            }
+        }
+        return grid;
     }
 }
