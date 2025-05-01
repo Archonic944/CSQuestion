@@ -8,13 +8,12 @@ public class BestTimeToSell {
         ParseUtility parse = new ParseUtility();
         parse.readTable(1, ",");
         int[] prices = parse.intArrayAtRow(0);
+        int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
-        for(int i = 0; i<prices.length - 1; i++){
-            for(int j = i + 1; j<prices.length; j++){
-                if(prices[j] - prices[i] > maxProfit){
-                    maxProfit = prices[j] - prices[i];
-                }
-            }
+
+        for (int price : prices) {
+            minPrice = Math.min(minPrice, price);
+            maxProfit = Math.max(maxProfit, price - minPrice);
         }
         System.out.println(maxProfit);
     }
