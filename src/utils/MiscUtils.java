@@ -35,4 +35,18 @@ public class MiscUtils {
     public static boolean equals(double a, double b, double tolerance){
         return Math.abs(a - b) < tolerance;
     }
+
+    public static int subSum(int[] prefixSumArray, int from, int to){
+        if(from == 0) return prefixSumArray[to];
+        else return prefixSumArray[to] - prefixSumArray[from - 1];
+    }
+
+    public static int[] prefixSumArray(int[] a){
+        int[] prefixSum = new int[a.length];
+        prefixSum[0] = a[0];
+        for(int i = 1; i<a.length; i++){
+            prefixSum[i] = prefixSum[i - 1] + a[i];
+        }
+        return prefixSum;
+    }
 }
