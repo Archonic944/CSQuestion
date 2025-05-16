@@ -1,7 +1,7 @@
 //mostly just to calibrate my sense of polynomial time
 public class SpeedTest {
-    static int operations = subarrays((int) Math.pow(10, 5));
-    static int deg = 1;
+    static int operations = 10;
+    static int deg = 9;
 
     public static void main(String[] args) {
         long millis = System.currentTimeMillis();
