@@ -59,6 +59,7 @@ public class ThirdFloorPool {
         if(i2 == 2) i2 = 0;
         //now let's do our swaps
         swap(floors, 0, i1);
+        if(i2 == 0) i2 = i1; //don't worry about this
         swap(floors, 1, i2);
         return floors;
     }
